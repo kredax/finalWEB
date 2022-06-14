@@ -244,3 +244,10 @@ hr {
     background-position: center;
     background-size: cover;
 }
+h2{
+    color: #3c1b66;
+    font-weight: normal;
+    font-size: 35px;
+    font-family: Arial;
+    text-transform: uppercase;
+}

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="../css/login.css">
+        
+        <style type="text/css">  </style>
         <title>New Product</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
@@ -38,7 +41,7 @@
             });
         </script>
     </head>
-    <body>
+    <body id="title">
         <div class="container" ng-app="ProductAddModule" ng-controller="ProductAddController" uploader="uploader">
             <h2>New Product</h2>
             <form ng-submit="addProduct()">
