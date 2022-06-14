@@ -45,9 +45,6 @@
                 $scope.uploader.onCompleteItem = function(fileItem, response, status, headers) {
                     $scope.product.image = fileItem.file.name;
                 }
-
-                /**** */
-
                 $scope.updateProduct = () => {
                     $http.put(`${$scope.root}/php/products.php`, $scope.product).then((result) => {
                         window.location.href = '../galary.html'
