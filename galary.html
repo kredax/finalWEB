@@ -1,18 +1,45 @@
 <html>
 <head>
-	<title>Delhi TOURISM</title>
+	<link rel="stylesheet" href="css/login.css">
+        
+        <style type="text/css">  </style>
+	<title>Product List</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js" integrity="sha512-7oYXeK0OxTFxndh0erL8FsjGvrl2VMDor6fVqzlLGfwOQQqTbYsGPv4ZZ15QHfSk80doyaM0ZJdvkyDcVO7KFA==" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-file-upload/2.6.1/angular-file-upload.min.js" integrity="sha512-axkIpxPnJn/ltsZKAG8OiY1Ef4bSZ3XiBj5DJOXC4tQG0519hu0kzVClhaVonpXIP6xJjDbLcNc88YiZb9pkEw==" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		
+		var app = angular.module('ProductModule', ['angularFileUpload']);
+		var controller = app.controller('ProductController', ($scope, $http, FileUploader) => {
+			$scope.products = new Array();
+
+			angular.element(document).ready(() => {
+				$scope.getProducts();
+			});
+
+			$scope.getProducts = () => {
+				$http.get('/dashboard/AvilesEvert_ProyectWebII/php/products.php').then((result) => {
+					$scope.products = result.data;
+				})
+			}
+		});
+	</script>
 </head>
 <body>
 <center>
-	<table border="1" width="100%">
+	<table border="1" width="100%" id="title">
 		<tr height="150">
-			<td background="1.jpeg" colspan="8">
+			
 			<center>
-			<font color="yellow" size=48>DELHI TOURISM</font>
+			<font color="#199A5C" size=80>The Big Plastic</font>
 			</center>
 		</tr>
 	<tr>
-	<td colspan="8" background="home.jpg">
+	
 	<marquee direction="rigth" scrolamount="10" behavior="alternate">
 		<a href="Images/tachobasura.png"><img src="Images/tachobasura.png" height="150"></a>
 <a href="Images/escobas.png"><img src="Images/escobas.png" height="150"></a>
@@ -27,31 +54,50 @@
 	<a href="home.html">HOME</a></td>
 	<td><a href="package.html">PACKAGE</a></td>
 	<td><a href="galary.html">GALARY</a></td>
-	
 	<td><a href="about.html">ABOUT</a></td>	
 	<td><a href="cld.html">SIGN IN</a></td>
 </tr>
+	<tr>
+	
+	</tr>
+	</table>
+
 <tr>
-<td colspan="8"><center><u><font size="6">India Tour Packages</font></u><center>
-<br>
-<a href="download (5).jpeg"><img src="download (5).jpeg" height="300"></a>
-<a href="3766-3-Best-Tourist-Places-in-Delhi-Tourism-in-Delhi-2.jpg"><img src="3766-3-Best-Tourist-Places-in-Delhi-Tourism-in-Delhi-2.jpg" height="300"></a>
-
-<a href="rajghat-600x436.jpg"><img src="rajghat-600x436.jpg" height="300"></a><br>
-<a href="jantar-mantar-600x436.jpg"><img src="jantar-mantar-600x436.jpg" height="300"></a>
-<a href="3766-7-Bahai-Temple-Best-Tourist-Places-in-Delhi-Tourism-in-Delhi.jpg" height="300"><img src="3766-7-Bahai-Temple-Best-Tourist-Places-in-Delhi-Tourism-in-Delhi.jpg" height="300"></a>
-<a href="connaught-place-600x436.jpg"><img src="connaught-place-600x436.jpg" height="300"></a>
-<a href="street-foods-delhi-600x436.jpg"><img src="street-foods-delhi-600x436.jpg" height="300"></a>
-<a href="dilli-haat-600x436.jpg"><img src="dilli-haat-600x436.jpg" height="300"></a>
-<a href="3.jpg"><img src="3.jpg" height="300"></a>
-<a href="akshardham-600x436.jpg"><img src="akshardham-600x436.jpg" height="300"></a>
-<a href="IMG_20151019_102749.jpg"><img src="IMG_20151019_102749.jpg" height="300"></a>
-<a href="iscon-temple-600x436.jpg"><img src="iscon-temple-600x436.jpg" height="300"></a>
-<a href="download.jpeg"><img src="download.jpeg" height="300"></a>
-<a href="images_23jpeg"><img src="images_23.jpeg" height="300"></a>
-<br>
-
-</td>
+	<div class="container" ng-app="ProductModule" ng-controller="ProductController" uploader="uploader">
+		<h2>Product List</h2>
+		
+		<table class="table table-primary">
+			<thead>
+				<tr>
+					<th>Image</th>
+					<th>Product name</th>
+					<th>Product price</th>
+					<th>Product description</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="product in products">
+					<td>
+						<img ng-src="{{ 'uploads/' + product.image }}" width="300" height="200" />
+					</td>
+					<td>
+						{{ product.name }}
+					</td>
+					<td>
+						{{ product.price }}
+					</td>
+					<td>
+						{{ product.description }}
+					</td>
+					<td>
+						<a href="{{ 'product/updateProduct.html?id=' + product.id }}" class="btn btn-primary">Edit</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<a href="product/addProduct.html" class="btn btn-primary">New Product</a>
+	</div>
 </tr>
 	
 
